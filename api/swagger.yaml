@@ -1,0 +1,187 @@
+---
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: "Hangman API"
+host: "hangman.localhost:8124"
+schemes:
+- "http"
+paths:
+  /hangman:
+    post:
+      tags:
+      - "hangman"
+      summary: "Create a new hangman game"
+      description: "Creates a new hangman game and returns information about the game,\
+        \ including the number of characters in the word and the remaining incorrect\
+        \ guesses left."
+      operationId: "createGame"
+      produces:
+      - "application/json"
+      - "text/plain"
+      responses:
+        201:
+          description: "A new hangman game was successfully created"
+          schema:
+            $ref: "#/definitions/Hangman"
+      x-swagger-router-controller: "Hangman"
+  /hangman/{game_id}:
+    get:
+      tags:
+      - "hangman"
+      summary: "Retrieves an existing hangman game"
+      description: ""
+      operationId: "getGame"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "game_id"
+        in: "path"
+        description: "ID for a specific hangman game"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/Hangman"
+        400:
+          description: "No game_id was provided in the request path"
+          schema:
+            $ref: "#/definitions/Error"
+        404:
+          description: "The requested hangman game does not exist"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Hangman"
+    put:
+      tags:
+      - "hangman"
+      summary: "Submits a new guess character for the given hangman game's word"
+      description: ""
+      operationId: "guessLetter"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "game_id"
+        in: "path"
+        description: "ID for a specific hangman game"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "content"
+        description: "An object containing a guessed character"
+        required: false
+        schema:
+          $ref: "#/definitions/Guess"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/Hangman"
+        400:
+          description: "The supplied guess value was not a single character between\
+            \ A and Z"
+          schema:
+            $ref: "#/definitions/Error"
+        404:
+          description: "The requested hangman game does not exist"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Hangman"
+    delete:
+      tags:
+      - "hangman"
+      summary: "Deletes an existing Hangman game.\n"
+      description: ""
+      operationId: "deleteGame"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "game_id"
+        in: "path"
+        description: "hangman game to delete"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        200:
+          description: "Successful response"
+        404:
+          description: "The requested hangman game does not exist"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Hangman"
+definitions:
+  Hangman:
+    type: "object"
+    required:
+    - game_id
+    - word_length
+    - letters_guessed
+    - letters_matched
+    - remaining_incorrect_guesses
+    - is_game_over
+    - is_winner
+    properties:
+      game_id:
+        type: "string"
+        description: "A UUID representing a specific hangman game in progress"
+      word_length:
+        type: "number"
+        format: "int32"
+        description: "The non-zero length of the word being guessed"
+      letters_guessed:
+        type: "array"
+        description: "An array containing any letters that have been guessed so far,\
+          \ whether correct or incorrect, by the client."
+        items:
+          type: "string"
+      letters_matched:
+        type: "array"
+        description: "The game word, where matched characters are revealed at each\
+          \ character index. Characters in the word that have not been identified\
+          \ are represented by `_` characters. All characters are returned uppercase.\n\
+          \nExample: The word \"APPLE\" with only the character \"P\" having been\
+          \ guessed correctly would return `[ \"_\", \"P\", \"P\", \"_\", \"_\" ]`\n"
+        items:
+          type: "string"
+      remaining_incorrect_guesses:
+        type: "number"
+        format: "int32"
+        description: "The number of remaining incorrect guesses left the client can\
+          \ request. If a user guesses a correct letter, a corresponding entry will\
+          \ be added to the `letters_guessed` property, and any letters in the word\
+          \ will be revealed in `letters_matched`, and this value will be left unchanged.\
+          \ If a user guesses a letter that has previously been guessed, this value\
+          \ will be left unchanged."
+      is_game_over:
+        type: "boolean"
+        description: "Indicates whether or not the current game is over. The service\
+          \ determines this using the `remaining_incorrect_guesses` and `letters_matched`\
+          \ properties also included in the response body."
+      is_winner:
+        type: "boolean"
+        description: "Indicates if the client has successfully won the hangman game.\
+          \ This value should only be read if `is_game_over` is true"
+      word:
+        type: "string"
+        description: "The actual word being guessed. This value is only present when\
+          \ the game is over (determined when `is_game_over` is `true`)."
+  Guess:
+    type: "object"
+    required:
+    - guess
+    properties:
+      guess:
+        type: "string"
+        description: "A single character guess to the word for the specified hangman\
+          \ game"
+  Error:
+    type: "object"
+    required:
+    - error
+    properties:
+      error:
+        type: "string"
+        description: "An error message from the service indicating the problem"

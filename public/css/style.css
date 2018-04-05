@@ -1,0 +1,50 @@
+body {
+  font: 12px "Open Sans", sans-serif;
+}
+
+.debug {
+  font-size: 10px;
+}
+
+#hangman {
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+#hangman .figure {
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.letters {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.letters span {
+  font-size: 30px;
+  padding: 10px;
+}
+
+.btn-row {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.btn-row button {
+  display: inline-block;
+}
+
+/* Make disabled options stand out more */
+.btn-row button:disabled, .btn-row button:hover:disabled {
+  background: #ccc;
+}
+
+.score {
+  margin: 10px 0;
+
+  font-size: 20px;
+  font-weight: 600;
+}

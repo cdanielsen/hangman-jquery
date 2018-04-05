@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Hangman!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            Hangman
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/docs">Docs</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  	<div id="main-content" class="container-fluid">
+  	  <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="hangman"></div>
+            <div class="letters"></div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-default guess-btn" value="A">A</button>
+              <button type="button" class="btn btn-default guess-btn" value="B">B</button>
+              <button type="button" class="btn btn-default guess-btn" value="C">C</button>
+              <button type="button" class="btn btn-default guess-btn" value="D">D</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-default guess-btn" value="E">E</button>
+              <button type="button" class="btn btn-default guess-btn" value="F">F</button>
+              <button type="button" class="btn btn-default guess-btn" value="G">G</button>
+              <button type="button" class="btn btn-default guess-btn" value="H">H</button>
+              <button type="button" class="btn btn-default guess-btn" value="I">I</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-default guess-btn" value="J">J</button>
+              <button type="button" class="btn btn-default guess-btn" value="K">K</button>
+              <button type="button" class="btn btn-default guess-btn" value="L">L</button>
+              <button type="button" class="btn btn-default guess-btn" value="M">M</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-default guess-btn" value="N">N</button>
+              <button type="button" class="btn btn-default guess-btn" value="O">O</button>
+              <button type="button" class="btn btn-default guess-btn" value="P">P</button>
+              <button type="button" class="btn btn-default guess-btn" value="Q">Q</button>
+              <button type="button" class="btn btn-default guess-btn" value="R">R</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-default guess-btn" value="S">S</button>
+              <button type="button" class="btn btn-default guess-btn" value="T">T</button>
+              <button type="button" class="btn btn-default guess-btn" value="U">U</button>
+              <button type="button" class="btn btn-default guess-btn" value="V">V</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-default guess-btn" value="W">W</button>
+              <button type="button" class="btn btn-default guess-btn" value="X">X</button>
+              <button type="button" class="btn btn-default guess-btn" value="Y">Y</button>
+              <button type="button" class="btn btn-default guess-btn" value="Z">Z</button>
+            </div>
+
+            <div class="btn-row">
+              <div class="score">
+                Score: <span id="wins">0</span> - <span id="losses">0</span>
+              </div>
+              <button id="reset-score" type="button" class="btn btn-warning">Reset Score</button>
+              <button id="new-game-button" type="button" class="btn btn-primary">New Game</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <pre class="debug"></pre>
+    </div>
+  	<script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
+    <script src="http://marionettejs.com/downloads/backbone.marionette.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>
