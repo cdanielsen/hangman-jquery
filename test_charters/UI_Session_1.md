@@ -22,13 +22,18 @@ Browser: Chrome
 
 ### Questions/Observations/Potential Bugs
 
- UX: no warning for resetting score at any time
- UX: not entirely clear which score belongs to which player
- UX: Player is not penalized for starting a new game in the middle of another one
- UX: No way navigate to docs and back without losing score
+ UX: No warning for resetting score at any time
+
+ UX: Not entirely clear which score belongs to which player
+
+ UX: Player is not penalized for starting a new game at any point of another one
+
+ UX: No way to navigate to docs and back without losing score
 
  UI Validation:
+
   Q: Player cannot repeat a letter guess (how does the API handle this?)
+  
   A: Used postman to send various data the UI would not allow (non alpha, lowercase, multiple letters, null...) API responded with helpful error response for all but null
 
 Could the same game be open in multiple tabs or browsers?

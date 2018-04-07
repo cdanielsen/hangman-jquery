@@ -8,6 +8,11 @@
   ],
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "grunt test",
+    "test:coverage": "istanbul cover _mocha",
+    "test:watch": "grunt watch"
+  },
   "dependencies": {
     "connect": "^3.2.0",
     "file-stream-rotator": "0.0.7",

@@ -28,17 +28,17 @@ This project leverages the mega-awesome [swagger-tools](https://github.com/apige
 Run all unit tests:
 
 ```
-grunt test
+npm test
 ```
 
 Run code coverage:
 
 ```
-istanbul cover node_modules/.bin/_mocha 
+npm run test:coverage
 ```
 
 Set up watch for jshint and testing:
 
 ```
-grunt watch
+npm run test:watch
 ```
