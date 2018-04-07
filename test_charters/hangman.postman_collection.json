@@ -1,0 +1,143 @@
+{
+	"info": {
+		"name": "Hangman",
+		"_postman_id": "cd440425-e7cb-799c-3181-96275383566b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Game",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2012f50-1d53-4a5b-999f-f7b9d0670c1d",
+						"type": "text/javascript",
+						"exec": [
+							"const game_id = pm.response.json().game_id",
+							"pm.environment.set(\"game_id\", game_id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8124/hangman/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8124",
+					"path": [
+						"hangman",
+						""
+					]
+				},
+				"description": "Create a new Hangman game instance"
+			},
+			"response": []
+		},
+		{
+			"name": "Game",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8124/hangman/{{game_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8124",
+					"path": [
+						"hangman",
+						"{{game_id}}"
+					]
+				},
+				"description": "RETRIEVE a Hangman game instance"
+			},
+			"response": []
+		},
+		{
+			"name": "Game",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"guess\": \"B\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8124/hangman/{{game_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8124",
+					"path": [
+						"hangman",
+						"{{game_id}}"
+					]
+				},
+				"description": "UPDATE a Hangman game instance"
+			},
+			"response": []
+		},
+		{
+			"name": "Game",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8124/hangman/{{game_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8124",
+					"path": [
+						"hangman",
+						"{{game_id}}"
+					]
+				},
+				"description": "DELETE a Hangman game instance"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,7 @@
-### Initial Exploratory Test Charter for Insitu Hangman Gmae
+## Initial Exploratory Test Charter for Insitu Hangman Game UI
 
-### Charter: Interact with the UI for 30 minutes, noting any irregularities or possible defects to follow up on
+### Charter
+Interact with the UI for 30 minutes, noting any irregularities or possible defects to follow up on
 
 Name: Christian Danielsen
 Date: April 6, 2018
@@ -8,7 +9,7 @@ Time: 930 PM PST
 Env: Localhost
 Browser: Chrome
 
-## Investigatoin hueristics
+### Investigation heuristics
  - Capability: Does the game perform according to the traditional rules of hangman?
  - Reliability: Is the game resilient to a variety of user interactions? (Mouse vs. keyboard etc.)
  - Validation: Does the UI respond gracefully to actions that should not be permitted? Does the API validation match the UI validation?
@@ -33,4 +34,3 @@ Browser: Chrome
 Could the same game be open in multiple tabs or browsers?
 
 Grey bottom bar appears to serve no purpose? (Inspector shows it's classed with "debug")
-
