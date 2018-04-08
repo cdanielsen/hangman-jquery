@@ -11,11 +11,13 @@
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix ./test/api/**/*.js",
+    "start": "node .",
     "test": "grunt test",
     "test:api": "ava",
     "test:api:watch": "ava --watch",
-    "test:coverage": "istanbul cover _mocha",
-    "test:watch": "grunt watch"
+    "test:unit:coverage": "istanbul cover _mocha",
+    "test:unit:watch": "grunt watch",
+    "test:ui": "concurrently --kill-others \"npm start\" \"cypress run\""
   },
   "ava": {
     "files": [
@@ -39,6 +41,8 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "blanket": "^1.2.3",
+    "concurrently": "^3.5.1",
+    "cypress": "^2.1.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.10.0",
