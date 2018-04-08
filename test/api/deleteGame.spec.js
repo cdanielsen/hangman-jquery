@@ -27,7 +27,7 @@ test('A DELETE to the /hangman/:id endpoint with a NON-EXISTANT game id should f
   t.is(res.statusCode, 404)
 })
 
-test('A DELETE to the /hangman:id endpoint with a valid id for a newly created game should succeed', async t => {
+test('A DELETE to the /hangman/:id endpoint with a valid id for a newly created game should succeed', async t => {
   t.plan(3)
 
   // Arrange
@@ -52,4 +52,28 @@ test('A DELETE to the /hangman:id endpoint with a valid id for a newly created g
   // Assert
   t.is(deleteResponse.statusCode, 200)
   t.is(getResponse.statusCode, 404)
+})
+
+// NOTE: This test fails with the current implemention of the delete endpoint
+test('A DELETE to the /hangman/:id endpoint for an already deleted game should return a 200 idempotently', async t => {
+  // Arrange
+  const postResponse = await rp({
+    method: 'POST',
+    uri: `${API_HOST}/hangman`
+  })
+  t.is(postResponse.statusCode, 201)
+  const newlyCreatedGame = postResponse.body
+
+  const firstDeleteResponse = await rp({
+    method: 'DELETE',
+    uri: `${API_HOST}/hangman/${newlyCreatedGame.game_id}`
+  })
+  t.is(firstDeleteResponse.statusCode, 200)
+
+  // Act
+  const secondDeleteResponse = await rp({
+    method: 'DELETE',
+    uri: `${API_HOST}/hangman/${newlyCreatedGame.game_id}`
+  })
+  t.is(secondDeleteResponse.statusCode, 200)
 })
