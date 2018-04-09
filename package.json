@@ -10,14 +10,16 @@
   "private": true,
   "scripts": {
     "lint": "eslint",
-    "lint:fix": "eslint --fix ./test/api/**/*.js",
+    "lint:fix": "eslint --fix ./test/api/**/*.js cypress/**/*.js",
     "start": "node .",
     "test": "grunt test",
     "test:api": "ava",
     "test:api:watch": "ava --watch",
     "test:unit:coverage": "istanbul cover _mocha",
     "test:unit:watch": "grunt watch",
-    "test:ui": "concurrently --kill-others \"npm start\" \"cypress run\""
+    "test:ui": "cypress run",
+    "test:ui:gui": "cypress open",
+    "test:ui:local": "start-server-and-test 8124 test:ui"
   },
   "ava": {
     "files": [
@@ -41,10 +43,10 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "blanket": "^1.2.3",
-    "concurrently": "^3.5.1",
     "cypress": "^2.1.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-cypress": "^2.0.1",
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
@@ -63,6 +65,7 @@
     "mocha": "^2.4.5",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
-    "sinon": "^1.17.4"
+    "sinon": "^1.17.4",
+    "start-server-and-test": "^1.4.0"
   }
 }
