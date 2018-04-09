@@ -1,4 +1,5 @@
 {
   "screenshotOnHeadlessFailure": false,
-  "videoRecording": false
+  "videoRecording": false,
+  "baseUrl": "http://localhost:8124"
 }

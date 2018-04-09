@@ -9,11 +9,9 @@ const {
   HangmanCanvas
 } = require('../page_objects/game.po.js')
 
-const UI_HOST = 'http://localhost:8124'
-
 describe('The initial state of the game', () => {
   beforeEach(() => {
-    cy.visit(UI_HOST)
+    cy.visit('/')
   })
 
   describe('The hangman canvas', () => {
