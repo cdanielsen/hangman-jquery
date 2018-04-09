@@ -12,7 +12,7 @@ To run the server, follow these simple steps:
 
 ```
 npm install
-node .
+npm start
 ```
 
 To view the Swagger UI interface:
@@ -25,20 +25,50 @@ This project leverages the mega-awesome [swagger-tools](https://github.com/apige
 
 ## Additional Tasks
 
-Run all unit tests:
+Run unit, api and ui tests (Note: This task will spin up and shut down the server for the api and ui tests)
 
 ```
 npm test
 ```
 
-Run code coverage:
+Run unit test code coverage:
 
 ```
-npm run test:coverage
+npm run test:unit:coverage
 ```
 
-Set up watch for jshint and testing:
+Set up watch for jshint and unit testing:
 
 ```
-npm run test:watch
+npm run test:unit:watch
+```
+
+Run api tests:
+
+```
+npm run test:api:local
+```
+
+Run api tests (server already running):
+
+```
+npm run test:api
+```
+
+Run ui tests:
+
+```
+npm run test:ui:local
+```
+
+Run ui tests (server already running):
+
+```
+npm run test:ui
+```
+
+Run ui tests with GUI / watch mode (server already running): 
+
+```
+npm run test:ui:gui
 ```

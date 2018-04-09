@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
         'public/js/**/*.js',
 
-        'test/*.js'
+        'test/*.spec.js'
       ]
     },
 
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
           reporter: 'spec',
           clearRequireCache: true,
         },
-        src: [ 'test/**/*.js' ]
+        src: [ 'test/*.spec.js' ]
       },
     },
 
