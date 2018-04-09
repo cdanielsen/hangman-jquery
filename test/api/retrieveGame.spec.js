@@ -7,15 +7,15 @@ const rp = require('request-promise').defaults({
 
 const { API_HOST } = require('./config')
 
-test('A GET to the /hangman/:id endpoint with a MISSING game id should fail', async t => {
-  t.plan(1)
-  const res = await rp({
-    method: 'GET',
-    uri: `${API_HOST}/hangman`
-  })
+// test('A GET to the /hangman/:id endpoint with a MISSING game id should fail', async t => {
+//   t.plan(1)
+//   const res = await rp({
+//     method: 'GET',
+//     uri: `${API_HOST}/hangman`
+//   })
 
-  t.is(res.statusCode, 405)
-})
+//   t.is(res.statusCode, 405)
+// })
 
 test('A GET to the /hangman/:id endpoint with a NON-EXISTANT game id should fail', async t => {
   t.plan(1)
