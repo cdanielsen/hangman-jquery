@@ -1,6 +1,10 @@
 const {
   NewGameButton,
   GuessButtons,
+  HangmanCanvas,
+  ResetScoreButton,
+  WinsScore,
+  LossScore,
   WordRevealDisplayLetterHolders
 } = require('../page_objects/game.po.js')
 
@@ -16,7 +20,33 @@ describe('A game in progress...', () => {
     cy.get(GuessButtons).eq(20).click()
   })
 
-  describe('The New Game Button', () => {
+  describe('The hangman canvas', () => {
+    it('Should have at least one body part', () => {
+      cy.get(HangmanCanvas).children().should('have.length.greaterThan', 4)
+    })
+  })
+
+  describe('The letter buttons', () => {
+    it('All vowels should be disabled', () => {
+      cy.get(GuessButtons).eq(0).should('have.attr', 'disabled')
+      cy.get(GuessButtons).eq(4).should('have.attr', 'disabled')
+      cy.get(GuessButtons).eq(8).should('have.attr', 'disabled')
+      cy.get(GuessButtons).eq(14).should('have.attr', 'disabled')
+      cy.get(GuessButtons).eq(20).should('have.attr', 'disabled')
+    })
+  })
+
+  describe('The Reset Score button', () => {
+    it('Should be clickable during an intitial game and not effect the initial 0-0 score', () => {
+      cy.get(WinsScore).should('contain', '0')
+      cy.get(LossScore).should('contain', '0')
+      cy.get(ResetScoreButton).click()
+      cy.get(WinsScore).should('contain', '0')
+      cy.get(LossScore).should('contain', '0')
+    })
+  })
+
+  describe('The New Game button', () => {
     it('Should be clickable after a game has started, but allow the user to cancel', () => {
       // Cypress accepts confirmation dialog boxes by default. This simulates clicking "cancel"
       const cancelConfirm = confirmationText => false
