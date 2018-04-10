@@ -1,0 +1,21 @@
+--- 
+language: node_js
+node_js: 
+  - "8"
+install: "npm i"
+script: "npm run test"
+deploy: 
+  - 
+    provider: heroku
+    api_key: 
+      secure: LPKJqyGvCMPlQiwQGq5Mqy+kMls1NGy1jqhivt1/Vwo4LU2maRsrrdFaRkIM6YLJSfi3GHixsAQFMh1zc5H6VoX3+0fSwwZeoJ6VLAX3ocnqEBvUYKLqx6KLSMT2sOrh81PJG/hfh+7BXSiOwDI3WCPKhc8Gdkx9zcAZSRTQF5F+py9yp8B0fmBiAigVuTpnMd9CKdmLTgNZ/68D+jMqeRxUqEnjy3hYmtpbs3Kf/fhWn0bQTzRYIXrp8HqphzHbmEcenSpSbaVIe5gF0pZIsrsPWICZXu/FILXldGhiCT2AuDJ5e7L0Rl45l1IxNcZbJDpBhAmUvJ8THrGOv+B44GKUBA4Cj8d/CLQRQ62LZvcm00DO5L+8AWe8pUr5+mGBLeks3dzOUxbwmRyKq2zAcxMwmrAU+18OEyszbH1IuG/qojwvivIyzgtM6ca7Q2gOpttfs++T0mxmr/fTrVc3RmBx4S+hLlBPum9GkWm8SrkYc1T87W/e5UCQ8g+9PJK8hA0xygaYP/J+X4XFB/5z+wQD+LipN9NdzHGBN6khmcIWcRFeI0rnAL6Y8CYav1p2cMs9ul6ZBjNmMB8QtHePG4vuEpaYrGoG2dG0B9/lldIP5ALAYTrq75owHvPLywNnR/H4OLXU2Rw+etGZ3owcmN1o0KzAB54+Euy7Za+/Tpw=
+    app: hangsitu
+    on: 
+      branch: master
+  - 
+    provider: heroku
+    api_key:
+      secure: LPKJqyGvCMPlQiwQGq5Mqy+kMls1NGy1jqhivt1/Vwo4LU2maRsrrdFaRkIM6YLJSfi3GHixsAQFMh1zc5H6VoX3+0fSwwZeoJ6VLAX3ocnqEBvUYKLqx6KLSMT2sOrh81PJG/hfh+7BXSiOwDI3WCPKhc8Gdkx9zcAZSRTQF5F+py9yp8B0fmBiAigVuTpnMd9CKdmLTgNZ/68D+jMqeRxUqEnjy3hYmtpbs3Kf/fhWn0bQTzRYIXrp8HqphzHbmEcenSpSbaVIe5gF0pZIsrsPWICZXu/FILXldGhiCT2AuDJ5e7L0Rl45l1IxNcZbJDpBhAmUvJ8THrGOv+B44GKUBA4Cj8d/CLQRQ62LZvcm00DO5L+8AWe8pUr5+mGBLeks3dzOUxbwmRyKq2zAcxMwmrAU+18OEyszbH1IuG/qojwvivIyzgtM6ca7Q2gOpttfs++T0mxmr/fTrVc3RmBx4S+hLlBPum9GkWm8SrkYc1T87W/e5UCQ8g+9PJK8hA0xygaYP/J+X4XFB/5z+wQD+LipN9NdzHGBN6khmcIWcRFeI0rnAL6Y8CYav1p2cMs9ul6ZBjNmMB8QtHePG4vuEpaYrGoG2dG0B9/lldIP5ALAYTrq75owHvPLywNnR/H4OLXU2Rw+etGZ3owcmN1o0KzAB54+Euy7Za+/Tpw=
+    app: hangsitu-test
+    on: 
+      all_branches: true
