@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   version: "0.0.1"
   title: "Hangman API"
-host: "hangman.localhost:8124"
+host: "localhost:8124"
 schemes:
 - "http"
 paths:

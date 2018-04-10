@@ -12,7 +12,7 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
 
-var serverPort = 8124;
+var serverPort = process.env.PORT || 8124;
 
 // swaggerRouter configuration
 var options = {

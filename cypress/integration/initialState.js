@@ -45,3 +45,5 @@ describe('The initial state of the game', () => {
     })
   })
 })
+
+// Test lint-staged
